@@ -1,4 +1,4 @@
-import { matchOne, match } from "../src";
+import { matchOne, match, search, matchQuestion } from "../src";
 
 describe('The matchOne function works fine', () => {
 
@@ -38,5 +38,37 @@ describe('The match function should match the same length string', () => {
   test('it should match the end of the string', () => {
     expect(match('$', '')).toBeTruthy();
     expect(match('az$', 'az')).toBeTruthy();
+  });
+
+  test('it should work with pattern that has question mark', () => {
+    expect(match('a?b', 'b')).toBeTruthy();
+    expect(match('a?b', 'ab')).toBeTruthy();
+    expect(match('ab?', 'a')).toBeTruthy();
+    expect(match('ab?c', 'ac')).toBeTruthy();
+  });
+});
+
+describe('The search function', () => {
+  test('it should match the start of string', () => {
+    expect(search('^', '')).toBeTruthy();
+    expect(search('^a', '')).toBeFalsy();
+    expect(search('^.', 'a')).toBeTruthy();
+  });
+
+  test('it should match the strings start at any place of the text', () => {
+    expect(search('aa', 'baa')).toBeTruthy();
+    expect(search('bcs', 'abcs')).toBeTruthy();
+    expect(search('abser', 'bsar')).toBeFalsy();
+  })
+});
+
+describe('The matchQuestion function', () => {
+
+  test('it should detect question mark and return correct result', () => {
+    expect(matchQuestion('a?b', 'b')).toBeTruthy();
+    expect(matchQuestion('a?b', 'ab')).toBeTruthy();
+    expect(matchQuestion('b?', 'a')).toBeTruthy();
+    expect(matchQuestion('b?', '')).toBeTruthy();
+    expect(matchQuestion('b?c', 'ac')).toBeTruthy();
   })
 });
