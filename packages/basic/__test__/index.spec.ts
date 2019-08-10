@@ -1,4 +1,4 @@
-import { matchOne } from "../src";
+import { matchOne, match } from "../src";
 
 describe('The matchOne function works fine', () => {
 
@@ -21,4 +21,17 @@ describe('The matchOne function works fine', () => {
     expect(matchOne('a', 'b')).toBeFalsy()
   });
 
+});
+
+describe('The match function should match the same length string', () => {
+
+  test('it should work with equal length string', () => {
+    expect(match('', '22')).toBeTruthy();
+    expect(match('a', '')).toBeFalsy();
+    expect(match('a', 'a')).toBeTruthy();
+    expect(match('a', 'b')).toBeFalsy();
+    expect(match('a.', 'ab')).toBeTruthy();
+    expect(match('.', 'c')).toBeTruthy();
+    expect(match('a.c', 'abc')).toBeTruthy();
+  })
 });
