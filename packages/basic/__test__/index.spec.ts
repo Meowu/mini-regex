@@ -89,3 +89,7 @@ describe('The matchStar function', () => {
     expect(matchStar('a*', 'aaaa')).toBeTruthy();
   })
 });
+
+// Now all string of these test cases was manually write.
+// TODO: add more test cases with randomly generated string to strongly hold my engine.
+// or use fuzzing: https://nickdrane.com/regex-and-automated-test-fuzzing/
