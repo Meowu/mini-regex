@@ -33,5 +33,10 @@ describe('The match function should match the same length string', () => {
     expect(match('a.', 'ab')).toBeTruthy();
     expect(match('.', 'c')).toBeTruthy();
     expect(match('a.c', 'abc')).toBeTruthy();
+  });
+
+  test('it should match the end of the string', () => {
+    expect(match('$', '')).toBeTruthy();
+    expect(match('az$', 'az')).toBeTruthy();
   })
 });
