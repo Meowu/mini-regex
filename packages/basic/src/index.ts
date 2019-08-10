@@ -27,6 +27,8 @@ export const search = (pattern: string, text: string): boolean => {
     return text.split('').some((_: string, index: number) => {
       return match(pattern, text.slice(index))
     })
+    // a trick, The prepended .* says that any number of any character can appear before the pattern we wish to match.
+    // return match('.*' + pattern, text);
   }
 };
 
