@@ -1,4 +1,4 @@
-import { matchOne, match, search, matchQuestion } from "../src";
+import { matchOne, match, search, matchQuestion, matchStar } from "../src";
 
 describe('The matchOne function works fine', () => {
 
@@ -46,6 +46,14 @@ describe('The match function should match the same length string', () => {
     expect(match('ab?', 'a')).toBeTruthy();
     expect(match('ab?c', 'ac')).toBeTruthy();
   });
+
+  test('it should support the pattern with *', () => {
+    expect(match('ab*c', 'ac')).toBeTruthy();
+    expect(match('ab*', 'ac')).toBeTruthy();
+    expect(match('b*', 'a')).toBeTruthy();
+    expect(match('ab*c', 'abc')).toBeTruthy();
+    expect(match('ab*c', 'abbbc')).toBeTruthy();
+  })
 });
 
 describe('The search function', () => {
@@ -70,5 +78,14 @@ describe('The matchQuestion function', () => {
     expect(matchQuestion('b?', 'a')).toBeTruthy();
     expect(matchQuestion('b?', '')).toBeTruthy();
     expect(matchQuestion('b?c', 'ac')).toBeTruthy();
+  })
+});
+
+describe('The matchStar function', () => {
+
+  test('it should match the * with 0 or more times', () => {
+    expect(matchStar('a*', '')).toBeTruthy();
+    expect(matchStar('a*', 'a')).toBeTruthy();
+    expect(matchStar('a*', 'aaaa')).toBeTruthy();
   })
 });
