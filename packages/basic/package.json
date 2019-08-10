@@ -1,0 +1,12 @@
+{
+  "name": "basic",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Meowu <474384902@qq.com>",
+  "homepage": "https://github.com/Meowu/mini-regex/tree/master/packages/basic#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
