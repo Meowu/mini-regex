@@ -31,6 +31,7 @@
   "exclude": [
     "dist",
     "tmp",
-    "node_modules"
+    "node_modules",
+    "**/*.spec.ts"
   ]
 }
